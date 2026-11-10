@@ -1,8 +1,128 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Offgrid Tools</title>
-<body style="font-family:sans-serif;max-width:40rem;margin:2rem auto;padding:0 1rem">
-<h1>Offgrid Tools</h1>
-<p><a href="https://play.google.com/store/apps/details?id=com.solarsizer.app">Helioplan: Solar Calculator</a> on Google Play.</p>
-<p><a href="https://postalman.github.io/offgrid-tools-site/">Privacy policy and app pages</a></p>
-</body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helioplan — off-grid solar calculator</title>
+<meta name="description" content="Battery and inverter sizing for off-grid solar and power outage backup. Catches the mistakes that burn hardware before you buy.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:title" content="Helioplan: Solar Calculator">
+<meta property="og:description" content="Battery and inverter sizing for off-grid solar and power outage backup.">
+<meta property="og:image" content="https://postalman.github.io/img/icon-192.png">
+<style>
+  :root {
+    --bg-top: #f6e4dc; --bg-bottom: #dcebf5;
+    --ink: #1b3150; --ink-soft: #4a5d78; --accent: #1f6e8c;
+    --card: rgba(255,255,255,.72); --line: rgba(27,49,80,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-top: #0f1f33; --bg-bottom: #0b1626;
+      --ink: #e8eef6; --ink-soft: #a9b8cc; --accent: #6fc3e0;
+      --card: rgba(255,255,255,.06); --line: rgba(255,255,255,.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(var(--bg-top), var(--bg-bottom) 70vh) fixed, var(--bg-bottom);
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 16px; }
+
+  header.wrap { text-align: center; padding: 56px 16px 24px; }
+  .brand { display: inline-flex; align-items: center; gap: 14px; }
+  .brand img { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+  .brand span { font-size: 2.2rem; font-weight: 800; letter-spacing: -.02em; }
+  h1 { font-size: clamp(1.9rem, 5.5vw, 3rem); line-height: 1.15; margin: 28px auto 12px; max-width: 18em; letter-spacing: -.02em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { color: var(--ink-soft); max-width: 36em; margin: 0 auto 20px; }
+  .badge img { width: 200px; height: auto; display: inline-block; }
+
+  .shots {
+    display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 12px 16px 24px; margin: 8px auto 0; max-width: 72rem;
+    scrollbar-width: thin;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 48px), transparent);
+            mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 48px), transparent);
+  }
+  .shots img {
+    flex: 0 0 auto; width: min(62vw, 250px); aspect-ratio: 9 / 16; height: auto;
+    border-radius: 18px; scroll-snap-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,.16);
+  }
+
+  .features { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 24px 0 8px; }
+  @media (min-width: 700px) { .features { grid-template-columns: 1fr 1fr; } }
+  .features div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .features h2 { font-size: 1.05rem; margin: 0 0 6px; }
+  .features p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+
+  .note { color: var(--ink-soft); font-size: .9rem; text-align: center; max-width: 40em; margin: 24px auto 0; }
+  footer.wrap { border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 16px 40px; text-align: center; font-size: .9rem; color: var(--ink-soft); }
+  footer a { margin: 0 10px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="brand"><img src="img/icon-192.png" alt=""><span>Helioplan</span></div>
+  <h1 data-t="h1">Plan your solar system <em>before you buy</em></h1>
+  <p class="lead" data-t="lead">Sizes panels, battery, charge controller, inverter, cables and fuses for your appliances and your location, then checks that it all works together. For a home, a van or a boat, off-grid or as backup during power outages.</p>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.solarsizer.app"><img src="img/google-play-badge.png" alt="Get it on Google Play"></a>
+</header>
+
+<div class="shots" aria-label="Screenshots">
+  <img src="img/shot-1.webp" alt="Projects and loads" loading="eager">
+  <img src="img/shot-2.webp" alt="Pick a system" loading="lazy">
+  <img src="img/shot-3.webp" alt="Mistakes that burn hardware" loading="lazy">
+  <img src="img/shot-4.webp" alt="Power outage backup" loading="lazy">
+  <img src="img/shot-5.webp" alt="Sun and climate by month" loading="lazy">
+  <img src="img/shot-6.webp" alt="How to install" loading="lazy">
+  <img src="img/shot-7.webp" alt="Component catalogue" loading="lazy">
+  <img src="img/shot-8.webp" alt="Dark theme" loading="lazy">
+</div>
+
+<main class="wrap">
+  <section class="features">
+    <div><h2 data-t="f1h">Catches costly mistakes</h2><p data-t="f1p">Frost pushing panel voltage over the controller limit, an inverter that can't start a pump, a battery that can't deliver the current. Each warning shows the value, the limit and what to change. Safety warnings are always free.</p></div>
+    <div><h2 data-t="f2h">Your sun, your climate</h2><p data-t="f2p">Sun and temperature for your exact location from PVGIS and NASA POWER, with a monthly balance that shows the weakest month at once.</p></div>
+    <div><h2 data-t="f3h">Real equipment</h2><p data-t="f3p">More than 1,800 panels, batteries, controllers, standard and hybrid inverters, with specifications from manufacturers' datasheets.</p></div>
+    <div><h2 data-t="f4h">Cables and protection</h2><p data-t="f4p">Cable sizes, fuses and breakers to your country's rules (IEC, NEC, CSA, AS/NZS), a step-by-step installation guide and a PDF report for your electrician.</p></div>
+  </section>
+  <p class="note" data-t="note">Helioplan prepares a plan for the system but does not replace an electrical installation design.</p>
+</main>
+
+<footer class="wrap">
+  <a href="offgrid-tools-site/privacy/" data-t="privacy">Privacy policy</a>
+  <a href="mailto:solarsizer.app@gmail.com" data-t="contact">Contact</a>
+  <div style="margin-top:10px">© 2026 Offgrid Tools</div>
+</footer>
+
+<script>
+  // Українська для браузерів з uk; решта — англійська (референсна мова).
+  var UK = {
+    h1: 'Сонячна станція — <em>розрахована до покупки</em>',
+    lead: 'Підбирає панелі, акумулятор, контролер заряду, інвертор, кабелі й запобіжники під ваші прилади й місцевість, а потім перевіряє, чи все працюватиме разом. Для дому, фургона чи човна — автономно або як резерв на час відключень.',
+    f1h: 'Ловить дорогі помилки',
+    f1p: 'Мороз підніме напругу панелей понад межу контролера, інвертор не запустить насос, акумулятор не віддасть потрібний струм. Кожне попередження показує значення, межу й що змінити. Попередження безпеки завжди безкоштовні.',
+    f2h: 'Ваше сонце й клімат',
+    f2p: 'Сонце й температура саме для вашого місця з PVGIS і NASA POWER, баланс по місяцях одразу показує найслабший.',
+    f3h: 'Справжнє обладнання',
+    f3p: 'Понад 1800 моделей панелей, акумуляторів, контролерів, звичайних і гібридних інверторів — характеристики з паспортів виробників.',
+    f4h: 'Кабелі й захист',
+    f4p: 'Перерізи кабелів, запобіжники й автомати за нормами вашої країни (IEC, NEC, CSA, AS/NZS), покрокова інструкція монтажу й PDF-звіт для електрика.',
+    note: 'Helioplan готує план системи, але не замінює проєкт електромонтажу.',
+    privacy: 'Політика конфіденційності',
+    contact: 'Зв’язатися'
+  };
+  if ((navigator.language || '').toLowerCase().indexOf('uk') === 0) {
+    document.documentElement.lang = 'uk';
+    document.querySelectorAll('[data-t]').forEach(function (el) {
+      var v = UK[el.getAttribute('data-t')];
+      if (v) el.innerHTML = v;
+    });
+  }
+</script>
+</body>
+</html>
